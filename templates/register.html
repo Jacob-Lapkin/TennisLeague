@@ -1,0 +1,53 @@
+{% extends 'frame.html'%}
+
+{% block body %}
+
+<div class="bg-light" style="height: 100vh;">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-sm-10 col-lg-4">
+            <div class="container rounded shadow p-3 mt-5 bg-white">
+                <form>
+                    <h2 class="text-center">Register</h2>
+                    <div class="mb-3">
+                        <label for="exampleInputFirstName" class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="exampleInputFirstName" required>
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputLastName" class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="exampleInputLastName" required>
+                      </div>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Email address</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" required>
+                      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Password</label>
+                      <input type="password" class="form-control" id="exampleInputPassword1" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="zipcode" class="form-label">Zip Code</label>
+                        <input type="number" class="form-control" id="zipcode" required>
+                      </div>
+                    <div class="mb-3">
+                        <label class="form-label">NTRP</label>
+                        <select class="form-select" required>
+                            <option value="None" selected>None</option>
+                            <option value="3">3.0</option>
+                            <option value="3.5">3.5</option>
+                            <option value="4">4.0</option>
+                            <option value="4.5">4.5</option>
+                            <option value="5.0">5.0</option>
+                            <option value="5.5">5.5</option>
+                            <option value="6.0">6.0</option>
+
+                          </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

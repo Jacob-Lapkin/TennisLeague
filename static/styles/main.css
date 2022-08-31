@@ -1,0 +1,12 @@
+.jumbo-home {
+    background-image: url('../assets/abstract.jpg');
+    object-fit: fill !important;
+}
+
+.home-jumbo {
+    background-image: url('../assets/cool-blur-abstract-4k-nd.jpg');
+    object-fit: fill !important;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+   
+}
