@@ -20,4 +20,3 @@ def get_kyrgios_news():
     only_articles = all_articles['articles']
     return only_articles
 
-print(get_kyrgios_news())
