@@ -7,19 +7,19 @@ auth = Blueprint("auth", __name__, url_prefix='', template_folder='templates')
 @auth.route('/register', methods=['POST', 'GET'])
 def register():
     if request.method == "POST":
-        email = request.form['emaail']
+        email = request.form['email']
         password = request.form['password']
         first = request.form['first']
         last = request.form['last']
         phone = request.form['phone']
         zip = request.form['zip']
         ntrp = request.form['ntrp']
-        check_user = mongo.db.user.find_one({"email":"email"})
+        check_user = mongo.db.users.find_one({"contact.email":email})
         if check_user:
             flash("Email already registered", 'danger')
             return redirect(url_for('auth.register'))
         else:
-            mongo.db.user.insert_one({"first_name":first,
+            mongo.db.users.insert_one({"first_name":first,
                                        "last_name":last,
                                        "password":password,
                                        "contact": {
@@ -29,8 +29,8 @@ def register():
                                        "zip_code":zip,
                                        "ntrp":ntrp,
                                        "log_count":0})
-            find_user = mongo.db.user.find_one({"email":email})
-            session['user_id'] = find_user.get('_id')
+            find_user = mongo.db.users.find_one({"contact.email":email})
+            session['user_id'] = str(find_user.get('_id'))
             flash("Successfully Registered", 'success')
             return redirect(url_for('home.home_page'))
     return render_template('register.html')

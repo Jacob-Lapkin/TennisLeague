@@ -10,3 +10,21 @@
     background-repeat: no-repeat;
    
 }
+
+
+.alert-fixed {
+    position:fixed !important; 
+    top: 20px; 
+    left: 25%;
+    width: 60%;
+    z-index:9999 !important; 
+    border-radius:0px
+}
+
+.auth-bg {
+        background-image: url('../assets/photo-1618005182384-a83a8bd57fbe.jpg');
+        object-fit: fill !important;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+       
+}
