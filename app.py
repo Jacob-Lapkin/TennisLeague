@@ -4,12 +4,15 @@ from dotenv import load_dotenv
 from views.auth import auth
 from views.home import home
 
+load_dotenv()
+
 app = Flask(__name__)
 
 app.config["SECRET KEY"] = "CHANGE THIS LATER"
 
 app.register_blueprint(auth)
 app.register_blueprint(home)
+
 
 
 @app.route('/', methods=["POST", "GET"])
