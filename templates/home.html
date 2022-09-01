@@ -17,7 +17,7 @@
             <a class="nav-link" href="#">Join League</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Find Court</a>
+            <a class="nav-link" href="#">Find Bar</a>
           </li>
           <li class="nav-item">
             <a class="nav-link disabled">Disabled</a>
@@ -65,38 +65,65 @@
         <div class="col-lg-4 col-md-5 p-4">
             <div class="shadow round bg-white" style="margin-top:-60px; margin-bottom:60px;">
                 <div class="p-3">
-                    <h4>Your League</h4>
+                    <h4>Your Bars</h4>
                 </div>
                 <!-- if block will start here -->
                 <div class="bg-light p-3">
                     <div class="text-center">
-                        <p class="text-secondary">No courts saved</p>
-                        <button class="bttn-jelly bttn-md bttn-primary ">Search Court</button>   
+                        <p class="text-secondary">No bars saved</p>
+                        <button class="bttn-jelly bttn-md bttn-primary ">Search bars</button>   
                                         
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-7 p-4">
+          <div class="shadow round bg-white" style="margin-top:-60px; margin-bottom:60px; height: 600px;
+          overflow-x: hidden;
+          overflow-y: auto;" ">
+              <div class="p-3">
+                  <h4>Nick News</h4>
+              </div>
+              <!-- if block will start here -->
+              <div class="bg-light p-3">
+                {% for news in kyrgios_news %}
+                <div class="card m-auto mb-3" style="width: 25rem;">
+                    <img class="card-img-top" src="{{news['urlToImage']}}" alt="Card image cap">
+                    <div class="card-body">
+                      <h6 class="card-title">{{news['title']}}</h6>
+                      <a href="{{news['url']}}"><button class="bttn-unite bttn-sm bttn-primary">View Article</button></a>
+                    </div>
+                  </div>
+            {% endfor %}
+              </div>
+          </div>
+         
+      </div>
+          <!-- else block will go here -->
+
+
+      <div class="col-lg-4 col-md-5 p-4">
+          <div class="shadow round bg-white" style="margin-top:-60px; margin-bottom:60px;">
+              <div class="p-3">
+                  <h4>Chill/Pull Rating</h4>
+              </div>
+              <!-- if block will start here -->
+              <div class="bg-light p-3">
+                  <div class="text-center">
+                      <p class="text-secondary">You haven't been rated yet</p>
+                      <button class="bttn-jelly bttn-md bttn-primary ">Search Players</button>   
+                                      
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
 </div>
 
 
-  <div>
-    <div class="row justify-content-center">
-        {% for news in kyrgios_news %}
-        <div class="div col-lg-3 col-md-4">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="..." alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-        </div>
-        {% endfor %}
-    </div>
-  </div>
 
 
 
