@@ -90,10 +90,10 @@
               <!-- if block will start here -->
               <div class="bg-light p-3">
                 {% for news in kyrgios_news %}
-                <div class="card m-auto mb-3" style="width: 25rem;">
+                <div class="card m-auto mb-3" style="width: 35rem;">
                     <img class="card-img-top" src="{{news['urlToImage']}}" alt="Card image cap">
                     <div class="card-body">
-                      <h6 class="card-title">{{news['title']}}</h6>
+                      <h5 class="card-title">{{news['title']}}</h5>
                       <a href="{{news['url']}}"><button class="bttn-unite bttn-sm bttn-primary">View Article</button></a>
                     </div>
                   </div>
