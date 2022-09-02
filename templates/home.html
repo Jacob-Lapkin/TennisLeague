@@ -3,7 +3,7 @@
 {% block body %}
 <!-- Navigation bar -->
 <nav class="navbar navbar-expand-lg bg-light shadow">
-    <div class="container-fluid">
+    <div class="container-fluid" style="max-width:2000px;">
         <a class="navbar-brand" href="#">
             <img src="../static/assets/tennis_ball.jpg" alt="" width="30" height="30" class="d-inline-block align-text-top">
             Kyrgios
@@ -14,7 +14,7 @@
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Join League</a>
+            <a class="nav-link" href="#">Search League</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Find Bar</a>
@@ -24,104 +24,110 @@
           </li>
         </ul>
       </div>
+      <div class="float-right">
+        <a href="{{url_for('logout')}}"><button class="bttn-bordered bttn-sm bttn-primary">Logout</button></a>      
+      </div>
     </div>
   </nav>
 
   <!-- main content -->
-
-  <!-- top jumbo -->
-<div class="home-jumbo border text-light" style="height:45vh;">
-    <div class="mt-4 ms-4 mb-5">
-        <div class="mt-5 p-3">
-            <h1>Hello Jacob</h1>
-        </div>
-        <div>
-            <p class="p-3">
-                Welcome Back,<br> glad to see that you have taken the initiative to prioritize drop serves and tweeners. 
-            </p>
-        </div>
-    </div>
-</div>
-
-<div>
-    <div class="row justify-content-center">
+  <div style="max-width:2000px;" class="m-auto">
+    <div class="home-jumbo border text-light" style="height:25em;">
+      <div class="mt-4 ms-4 mb-5">
+          <div class="mt-5 p-3">
+              <h1 class="display-4 fw-bold">Hello {{current_user['first_name']}}</h1>
+          </div>
+          <div>
+              <p class="p-3">
+                  Welcome Back,<br> glad to see that you have taken the initiative to prioritize drop serves and tweeners. 
+              </p>
+          </div>
+      </div>
+  </div>
+  
+  <div>
+      <div class="row justify-content-center">
+          <div class="col-lg-6 col-md-7 p-4">
+              <div class="shadow round bg-white" style="margin-top:-60px; margin-bottom:60px;">
+                  <div class="p-3">
+                      <h4 class="fw-bold">Your League</h4>
+                  </div>
+                  <!-- if block will start here -->
+                  <div class="bg-light p-3">
+                      <div class="text-center">
+                          <p class="text-secondary">No leagues joined</p>
+                          <button class="bttn-jelly bttn-md bttn-primary ">Join Now</button>                    
+                      </div>
+                  </div>
+              </div>
+          </div>
+              <!-- else block will go here -->
+  
+  
+          <div class="col-lg-4 col-md-5 p-4">
+              <div class="shadow round bg-white" style="margin-top:-60px; margin-bottom:60px;">
+                  <div class="p-3">
+                      <h4 class="fw-bold">Your Bars</h4>
+                  </div>
+                  <!-- if block will start here -->
+                  <div class="bg-light p-3">
+                      <div class="text-center">
+                          <p class="text-secondary">No bars saved</p>
+                          <button class="bttn-jelly bttn-md bttn-primary ">Search bars</button>   
+                                          
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  
+      <div class="row justify-content-center">
         <div class="col-lg-6 col-md-7 p-4">
-            <div class="shadow round bg-white" style="margin-top:-60px; margin-bottom:60px;">
+            <div class="shadow round bg-white" style="margin-top:-60px; margin-bottom:60px; height: 600px;
+            overflow-x: hidden;
+            overflow-y: auto;">
                 <div class="p-3">
-                    <h4>Your League</h4>
+                    <h4 class="fw-bold">Nick News</h4>
                 </div>
                 <!-- if block will start here -->
                 <div class="bg-light p-3">
-                    <div class="text-center">
-                        <p class="text-secondary">No leagues joined</p>
-                        <button class="bttn-jelly bttn-md bttn-primary ">Join Now</button>                    
+                  {% for news in kyrgios_news %}
+                  <div class="card m-auto mb-3" style="width: 35rem;">
+                      <img class="card-img-top" src="{{news['urlToImage']}}" alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title">{{news['title']}}</h5>
+                        <a href="{{news['url']}}"><button class="bttn-unite bttn-sm bttn-primary">View Article</button></a>
+                      </div>
                     </div>
+              {% endfor %}
                 </div>
             </div>
+           
         </div>
             <!-- else block will go here -->
-
-
+  
+  
         <div class="col-lg-4 col-md-5 p-4">
             <div class="shadow round bg-white" style="margin-top:-60px; margin-bottom:60px;">
                 <div class="p-3">
-                    <h4>Your Bars</h4>
+                    <h4 class="fw-bold">Chill/Pull Rating</h4>
                 </div>
                 <!-- if block will start here -->
                 <div class="bg-light p-3">
                     <div class="text-center">
-                        <p class="text-secondary">No bars saved</p>
-                        <button class="bttn-jelly bttn-md bttn-primary ">Search bars</button>   
+                        <p class="text-secondary">You haven't been rated yet</p>
+                        <button class="bttn-jelly bttn-md bttn-primary ">Search Players</button>   
                                         
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="row justify-content-center">
-      <div class="col-lg-6 col-md-7 p-4">
-          <div class="shadow round bg-white" style="margin-top:-60px; margin-bottom:60px; height: 600px;
-          overflow-x: hidden;
-          overflow-y: auto;">
-              <div class="p-3">
-                  <h4>Nick News</h4>
-              </div>
-              <!-- if block will start here -->
-              <div class="bg-light p-3">
-                {% for news in kyrgios_news %}
-                <div class="card m-auto mb-3" style="width: 35rem;">
-                    <img class="card-img-top" src="{{news['urlToImage']}}" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">{{news['title']}}</h5>
-                      <a href="{{news['url']}}"><button class="bttn-unite bttn-sm bttn-primary">View Article</button></a>
-                    </div>
-                  </div>
-            {% endfor %}
-              </div>
-          </div>
-         
-      </div>
-          <!-- else block will go here -->
-
-
-      <div class="col-lg-4 col-md-5 p-4">
-          <div class="shadow round bg-white" style="margin-top:-60px; margin-bottom:60px;">
-              <div class="p-3">
-                  <h4>Chill/Pull Rating</h4>
-              </div>
-              <!-- if block will start here -->
-              <div class="bg-light p-3">
-                  <div class="text-center">
-                      <p class="text-secondary">You haven't been rated yet</p>
-                      <button class="bttn-jelly bttn-md bttn-primary ">Search Players</button>   
-                                      
-                  </div>
-              </div>
-          </div>
-      </div>
   </div>
-</div>
+  
+  </div>
+  <!-- top jumbo -->
+
 
 
 

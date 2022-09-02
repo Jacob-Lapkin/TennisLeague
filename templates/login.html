@@ -2,22 +2,22 @@
 
 {% block body %}
 
-<div class="bg-light" style="height: 100vh;">
+<div class="container-fluid bg-light" style="height: 100vh;">
     <div class="row justify-content-center">
         <div class="col-md-8 col-sm-10 col-lg-4">
             <div class="container rounded shadow p-3 mt-5 bg-white">
-                <form>
+                <form method="POST" action="{{url_for('auth.login')}}">
                     <h2 class="text-center">Login</h2>
                     <div class="mb-3">
                       <label for="exampleInputEmail1" class="form-label">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" required>
+                      <input name="email" type="email" class="form-control" id="exampleInputEmail1" required>
                     </div>
                     <div class="mb-3">
                       <label for="exampleInputPassword1" class="form-label">Password</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1" required>
+                      <input name="password" type="password" class="form-control" id="exampleInputPassword1" required>
                     </div>
                   
-                    <button type="submit" class="bttn-jelly bttn-md bttn-default">Submit</button>
+                    <button type="submit" class="bttn-jelly bttn-md bttn-primary">Submit</button>
                   </form>
             </div>
         </div>
