@@ -14,7 +14,7 @@
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{url_for('leagues.leagues_home')}}">Search League</a>
+            <a class="nav-link" href="{{url_for('leagues.leagues_home')}}">League</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Find Bar</a>
@@ -93,10 +93,11 @@
                 <!-- if block will start here -->
                 <div class="bg-light p-3">
                   {% for news in kyrgios_news %}
-                  <div class="card m-auto mb-3" style="width: 35rem;">
+                  <div class="card m-auto mb-3" style="width: 40rem;">
                       <img class="card-img-top" src="{{news['urlToImage']}}" alt="Card image cap">
                       <div class="card-body">
                         <h5 class="card-title">{{news['title']}}</h5>
+                        <br>
                         <a href="{{news['url']}}"><button class="bttn-unite bttn-sm bttn-primary">View Article</button></a>
                       </div>
                     </div>
@@ -129,9 +130,55 @@
   </div>
   <!-- top jumbo -->
 
+<!-- Modal for tsitsipas rating -->
+{% if current_user['log_count'] == 1 and current_user['tsit_survey'] == False %}
+<!-- Vertically centered scrollable modal -->
+<h1>this is a test</h1>
 
+<div class="modal" tabindex="-1" id="myModal" data-bs-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Almost There! Please fill out this survey first.</h5>
+      </div>
+      <div>
+        <div class="text-center mt-3">
+              <img src="../static/assets/Stefanos-Tsitsipas-Olympics-1.jpg" class="rounded shadow" alt="" style="max-width:450px;">
+          <div class="media-body">
+          </div>
+        </div>
+      </div>
+      <form action="{{url_for('home.home_page')}}" method="POST">
+        <div class="modal-body">
+          <br>
+          <p>Which ATP player do you think pays for Tinder?</p>
+          <select class="form-select" aria-label="Default select example" required>
+            <option selected>Tsitsipas</option>
+            <option value="1">Tsitsipas</option>
+            <option value="2">Tsitsipas</option>
+            <option value="3">Tsitsipas</option>
+          </select>
+          <br>
+          <p>Which ATP player do you think plays pickle ball?</p>
+          <select class="form-select" aria-label="Default select example" required>
+            <option selected>Tsitsipas</option>
+            <option value="1">Tsitsipas</option>
+            <option value="2">Tsitsipas</option>
+            <option value="3">Tsitsipas</option>
+          </select>
+        </div>
+        <div class="modal-footer">
+          <button class="bttn-simple bttn-md bttn-primary">Submit</button>      
+        </div>
+      </form>
+    </div>
+</div>
+</div>
 
-
-
-
+<script type="text/javascript">
+  window.onload = () => {
+      $('#myModal').modal('show');
+  }
+</script>
+{% endif %}
 {% endblock %}

@@ -12,7 +12,7 @@ def register():
         first = request.form['first']
         last = request.form['last']
         phone = request.form['phone']
-        zip = request.form['zip']
+        state = request.form['state']
         ntrp = request.form['ntrp']
         check_user = mongo.db.users.find_one({"contact.email":email})
         if check_user:
@@ -27,9 +27,10 @@ def register():
                                             "email":email,
                                             "phone_number":phone,
                                                     },
-                                       "zip_code":zip,
+                                       "state":state,
                                        "ntrp":ntrp,
-                                       "log_count":0})
+                                       "log_count":1,
+                                       'tsit_survey':False})
             current_user = email
             session['email'] = current_user
             flash("Successfully Registered", 'success')
@@ -51,6 +52,7 @@ def login():
             checked_password = check_password_hash(find_user['password'], password)
             if checked_password:
                 session['email'] = email
+                mongo.db.users.update_one({"contact.email":email}, {"$inc": {"log_count":1}})
                 return redirect(url_for('home.home_page'))
             else:
                 flash("password is incorrect", 'danger')

@@ -1,5 +1,5 @@
 .jumbo-home {
-    background-image: url('../assets/abstract.jpg');
+    background-image: url('../assets/nick1.jpg');
     object-fit: fill !important;
 }
 
@@ -22,9 +22,13 @@
 }
 
 .auth-bg {
-        background-image: url('../assets/photo-1618005182384-a83a8bd57fbe.jpg');
+        background-image: url('../assets/nick.jpg');
         object-fit: fill !important;
         background-size: 100% 100%;
-        background-repeat: no-repeat;
-       
+        background-repeat: no-repeat;   
+}
+
+.league-image {
+    object-fit: fill !important;
+    width: 100%;
 }

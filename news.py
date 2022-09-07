@@ -27,7 +27,7 @@ newsapi = NewsApiClient(api_key=news_api)
 all_articles = newsapi.get_everything(q='Kyrgios',
                                       from_param=from_date,
                                       language='en',
-                                      sort_by='relevancy',
+                                      sort_by='publishedAt',
                                       page=1)
 
 
